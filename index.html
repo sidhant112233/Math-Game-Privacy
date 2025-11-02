@@ -13,67 +13,137 @@
     }
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ffe0b2, #fff3e0);
+      background: linear-gradient(120deg, #ff9a9e, #fad0c4, #fbc2eb);
+      background-size: 300% 300%;
+      animation: gradientBG 12s ease infinite;
       color: #333;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      overflow-x: hidden;
     }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     header {
-      background: linear-gradient(135deg, #ff7043, #ff9800);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
       color: white;
       text-align: center;
-      padding: 40px 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 50px 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border-bottom: 2px solid rgba(255,255,255,0.3);
+      animation: fadeInDown 1s ease;
     }
+
     header h1 {
-      font-size: 2.2em;
-      margin-bottom: 10px;
+      font-size: 2.5em;
+      background: linear-gradient(90deg, #ff7043, #ffcc00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 3s infinite;
     }
+
+    @keyframes shimmer {
+      0% { background-position: -200px 0; }
+      100% { background-position: 200px 0; }
+    }
+
     .produced-by {
       font-style: italic;
       font-size: 1em;
+      color: #fff;
       opacity: 0.9;
+      margin-top: 8px;
     }
+
     main {
       flex: 1;
       max-width: 900px;
-      background: #ffffff;
-      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 20px;
       padding: 40px;
-      margin: 40px auto;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      margin: 50px auto;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      animation: fadeInUp 1.2s ease;
+      transform: translateY(30px);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     main:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      transform: translateY(10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
     }
+
     h2 {
       color: #ff7043;
       margin-top: 25px;
       margin-bottom: 10px;
-      font-size: 1.4em;
+      font-size: 1.5em;
+      position: relative;
     }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #ff7043, #ffcc00);
+      margin-top: 6px;
+      border-radius: 2px;
+    }
+
     p, li {
-      line-height: 1.7;
+      line-height: 1.8;
       color: #444;
       margin-bottom: 10px;
     }
+
     ul {
       margin-left: 20px;
     }
+
     footer {
       text-align: center;
-      padding: 20px;
-      background: linear-gradient(135deg, #ffcc80, #ffe0b2);
-      color: #333;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
       font-size: 0.95em;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 1.2s ease;
     }
+
     footer .produced-by {
       display: block;
-      margin-top: 5px;
+      margin-top: 8px;
       font-size: 0.9em;
+      color: #ffe082;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Section Fade-In Animation on Scroll */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease-out;
+    }
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -85,39 +155,67 @@
   </header>
 
   <main>
-    <p><strong>Last updated:</strong> November 1, 2025</p>
+    <section class="fade-section">
+      <p><strong>Last updated:</strong> November 1, 2025</p>
 
-    <h2>Introduction</h2>
-    <p>Welcome to <strong>Math Game</strong>! Your privacy is very important to us. This policy explains what information we collect and how we use it to ensure a safe and enjoyable experience for all users.</p>
+      <h2>Introduction</h2>
+      <p>Welcome to <strong>Math Game</strong>! Your privacy is very important to us. This policy explains what information we collect and how we use it to provide a safe and fun experience.</p>
+    </section>
 
-    <h2>Information We Collect</h2>
-    <ul>
-      <li>We do not collect personal data such as your name, email, or phone number.</li>
-      <li>Anonymous analytics data may be collected to improve game performance and user experience.</li>
-      <li>Advertisements may be displayed using Google AdMob or similar third-party services.</li>
-    </ul>
+    <section class="fade-section">
+      <h2>Information We Collect</h2>
+      <ul>
+        <li>We do not collect personal data such as your name, email, or phone number.</li>
+        <li>Anonymous analytics data may be collected to improve gameplay and performance.</li>
+        <li>Advertisements may be shown using Google AdMob or similar platforms.</li>
+      </ul>
+    </section>
 
-    <h2>Children’s Privacy</h2>
-    <p><strong>Math Game</strong> does not knowingly collect any personal information from children under 13 years old. We encourage parents to monitor their children's app usage.</p>
+    <section class="fade-section">
+      <h2>Children’s Privacy</h2>
+      <p><strong>Math Game</strong> does not knowingly collect data from children under 13 years of age. Parents are encouraged to monitor their child’s app activity.</p>
+    </section>
 
-    <h2>Data Storage</h2>
-    <p>All game settings and preferences (like sound and theme) are stored locally on your device. We do not transmit or store any personal data on external servers.</p>
+    <section class="fade-section">
+      <h2>Data Storage</h2>
+      <p>Game preferences (such as sound or difficulty settings) are stored locally on your device. No personal data is transmitted to our servers.</p>
+    </section>
 
-    <h2>Third-Party Services</h2>
-    <p>This app may include links or ads that lead to external websites or services. We are not responsible for their content or privacy policies. Please review their policies separately.</p>
+    <section class="fade-section">
+      <h2>Third-Party Services</h2>
+      <p>The app may contain links to third-party websites or ads. We are not responsible for their privacy practices. Please review their privacy policies individually.</p>
+    </section>
 
-    <h2>Changes to This Policy</h2>
-    <p>We may update our Privacy Policy from time to time. Updates will be reflected on this page with a new “Last updated” date.</p>
+    <section class="fade-section">
+      <h2>Changes to This Policy</h2>
+      <p>We may occasionally update this Privacy Policy. Any updates will appear here with a revised “Last updated” date.</p>
+    </section>
 
-    <h2>Contact Us</h2>
-    <p>If you have any questions about this Privacy Policy, please contact us at:</p>
-    <p><strong>Email:</strong> support@mathgameapp.com</p>
+    <section class="fade-section">
+      <h2>Contact Us</h2>
+      <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+      <p><strong>Email:</strong> support@mathgameapp.com</p>
+    </section>
   </main>
 
   <footer>
     &copy; 2025 Math Game. All rights reserved.
     <span class="produced-by">Produced by <strong>Angle Games</strong></span>
   </footer>
+
+  <script>
+    // Reveal sections on scroll
+    const sections = document.querySelectorAll('.fade-section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(sec => observer.observe(sec));
+  </script>
 
 </body>
 </html>
